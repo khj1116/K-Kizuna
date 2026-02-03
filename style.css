@@ -1,95 +1,321 @@
 
 :root {
-    --primary-color: #3A4D8F;
-    --accent-color: #E91E63;
-    --background-color: #FDFDFD;
+    --primary-color: #FADADD; /* Soft Pink */
+    --secondary-color: #FF8A8A; /* Gentle Coral */
+    --accent-color: #A0C4FF;   /* Calm Blue */
+    --background-color: #F9F9F9;
     --text-color: #333333;
+    --light-text-color: #666666;
     --font-family: 'Noto Sans KR', sans-serif;
+    --border-radius: 15px;
+    --shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    --card-background: #ffffff;
+    --header-background: linear-gradient(135deg, var(--primary-color), #ffffff);
+    --footer-background: #EAEAEA;
+    --quiz-option-bg: #f1f1f1;
+}
+
+body.dark-mode {
+    --primary-color: #D1A3A9; /* Muted Pink */
+    --secondary-color: #E57373; /* Muted Coral */
+    --accent-color: #82A9D4;   /* Muted Blue */
+    --background-color: #121212;
+    --text-color: #E0E0E0;
+    --light-text-color: #B0B0B0;
+    --shadow: 0 8px 25px rgba(255, 255, 255, 0.05);
+    --card-background: #1E1E1E;
+    --header-background: linear-gradient(135deg, #2c2c2c, #1a1a1a);
+    --footer-background: #1E1E1E;
+    --quiz-option-bg: #333333;
+}
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
     font-family: var(--font-family);
     background-color: var(--background-color);
     color: var(--text-color);
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    background-image: url('data:image/svg+xml,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-4c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm58-33c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm-5 20c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM22 60c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3z" fill="%23eee" fill-opacity="0.4" fill-rule="evenodd"/%3E%3C/svg%3E');
+    line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 header {
     text-align: center;
-    margin-bottom: 2rem;
+    padding: 2rem 2rem 4rem 2rem;
+    background: var(--header-background);
+    position: relative;
 }
 
 h1 {
-    font-size: 3rem;
-    color: var(--primary-color);
+    font-size: 2.2rem;
     font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
 }
 
-p {
-    font-size: 1.2rem;
-    color: #666;
+h2 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
 }
 
-.chat-container {
-    width: 90%;
-    max-width: 800px;
-    background-color: white;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1), 0 1px 8px rgba(0, 0, 0, 0.06);
-    display: flex;
-    flex-direction: column;
-    height: 60vh;
+header p {
+    font-size: 1.1rem;
+    color: var(--light-text-color);
+    max-width: 600px;
+    margin: 0 auto 2rem auto;
 }
 
-.chat-display {
-    flex-grow: 1;
-    padding: 20px;
-    overflow-y: auto;
-    border-bottom: 1px solid #eee;
-}
-
-.chat-input-area {
-    display: flex;
-    padding: 20px;
-}
-
-#user-input {
-    flex-grow: 1;
-    border: 2px solid #ddd;
-    border-radius: 25px;
-    padding: 10px 20px;
-    font-size: 1rem;
-    font-family: var(--font-family);
-    transition: border-color 0.3s ease;
-}
-
-#user-input:focus {
-    outline: none;
-    border-color: var(--primary-color);
-}
-
-#send-button {
-    background-color: var(--primary-color);
+#start-test-button {
+    background-color: var(--secondary-color);
     color: white;
     border: none;
-    border-radius: 25px;
-    padding: 10px 25px;
-    margin-left: 10px;
+    border-radius: 50px;
+    padding: 1rem 2.5rem;
+    font-size: 1.2rem;
+    font-weight: 700;
     cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 15px rgba(255, 138, 138, 0.4);
+}
+
+#start-test-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 138, 138, 0.5);
+}
+
+main {
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+}
+
+section {
+    width: 100%;
+    max-width: 800px;
+}
+
+h3 {
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--text-color);
+}
+
+/* AI Diagnosis Section */
+#ai-diagnosis {
+    text-align: center;
+}
+
+.quiz-container {
+    background-color: var(--card-background);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+}
+
+#quiz {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+#quiz .question-text {
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+#quiz .options {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+#quiz label {
+    display: block;
+    background-color: var(--quiz-option-bg);
+    border-radius: 10px;
+    padding: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border: 2px solid transparent;
+}
+
+#quiz input[type="radio"] {
+    display: none;
+}
+
+#quiz input[type="radio"]:checked + label {
+    background-color: var(--primary-color);
+    border-color: var(--secondary-color);
+    font-weight: 700;
+    color: #333;
+}
+
+body.dark-mode #quiz input[type="radio"]:checked + label {
+     color: #fff;
+}
+
+
+#next-button {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 0.8rem 2rem;
     font-size: 1rem;
     font-weight: 700;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    transition: background-color 0.2s;
 }
 
-#send-button:hover {
-    background-color: #2c3a6e;
-    box-shadow: 0 5px 15px rgba(58, 77, 143, 0.4);
+#next-button:hover {
+    background-color: #87AEEF;
 }
 
+.value-prop {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: var(--card-background);
+    border-radius: var(--border-radius);
+    text-align: center;
+    border: 1px solid var(--accent-color);
+}
+
+.value-prop h4 {
+    font-size: 1.2rem;
+    color: var(--accent-color);
+    margin-bottom: 0.5rem;
+}
+
+/* Success Stories */
+#success-stories {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.testimonial {
+    background-color: var(--card-background);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.testimonial img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    object-fit: cover;
+    border: 3px solid var(--primary-color);
+}
+
+.testimonial p {
+    font-size: 1rem;
+    color: var(--light-text-color);
+    margin-bottom: 1rem;
+}
+
+.testimonial span {
+    font-weight: 700;
+    color: var(--secondary-color);
+}
+
+
+footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    margin-top: 2rem;
+    background-color: var(--footer-background);
+    color: var(--light-text-color);
+}
+
+.hidden {
+    display: none;
+}
+
+/* Theme Switcher */
+.theme-switch-wrapper {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    align-items: center;
+}
+.theme-switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+}
+
+.theme-switch input {
+    display:none;
+}
+
+.slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+}
+
+.slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 26px;
+}
+
+input:checked + .slider {
+    background-color: var(--accent-color);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+    h2 {
+        font-size: 1.2rem;
+    }
+    header {
+        padding: 4rem 1rem 3rem 1rem;
+    }
+    main {
+        padding: 1rem;
+    }
+}
