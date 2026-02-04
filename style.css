@@ -471,4 +471,26 @@ body.dark-mode .ad-unit-container ins {
     margin-bottom: 0.5rem;
 }
 
+#about-k-kizuna {
+    text-align: center; /* Center align block elements like H3 */
+    padding: 2rem 1rem; /* Add some padding consistent with main */
+    max-width: 800px; /* Limit width */
+    margin: 3rem auto; /* Center the section itself and provide spacing */
+    background-color: var(--card-background); /* Add a background for distinction */
+    border-radius: var(--border-radius); /* Rounded corners */
+    box-shadow: var(--shadow); /* Add shadow for depth */
+}
+
+#about-k-kizuna p,
+#about-k-kizuna ul {
+    text-align: left; /* Keep long texts left-aligned for readability */
+    max-width: 700px; /* Control width of text blocks */
+    margin: 1rem auto; /* Center these text blocks within the section */
+}
+
+#about-k-kizuna ul {
+    list-style-position: inside;
+    padding-left: 1.5rem;
+}
+
 
