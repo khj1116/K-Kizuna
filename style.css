@@ -432,4 +432,43 @@ body.dark-mode .ad-unit-container ins {
     color: var(--secondary-color);
 }
 
+/* Info Sections (Privacy Policy, About Us, etc.) */
+.info-section {
+    padding: 3rem 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: var(--card-background);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+    text-align: center; /* Center align section content */
+}
+
+.info-section h3 {
+    margin-bottom: 2rem;
+    color: var(--text-color);
+}
+
+.info-section h4 {
+    color: var(--secondary-color);
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.info-section p, .info-section ul {
+    text-align: left; /* Align text within wrapper to left */
+    max-width: 700px;
+    margin: 0.5rem auto; /* Center paragraphs and lists */
+    color: var(--light-text-color);
+}
+
+.info-section ul {
+    list-style-position: inside;
+    padding-left: 1.5rem;
+}
+
+.info-section ul li {
+    margin-bottom: 0.5rem;
+}
+
 
