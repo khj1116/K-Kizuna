@@ -1,5 +1,5 @@
 
-# Blueprint: 한국남성과의 연애/결혼 생활 Q&A AI
+# Blueprint: 韓国人男性との恋愛/結婚生活 Q&A AI
 
 ## Overview
 

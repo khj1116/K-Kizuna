@@ -6,7 +6,7 @@
     --background-color: #F9F9F9;
     --text-color: #333333;
     --light-text-color: #666666;
-    --font-family: 'Noto Sans KR', sans-serif;
+    --font-family: 'Noto Sans JP', sans-serif;
     --border-radius: 15px;
     --shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
     --card-background: #ffffff;
@@ -415,6 +415,21 @@ body.dark-mode .ad-unit-container {
 
 body.dark-mode .ad-unit-container ins {
     background-color: var(--background-color);
+}
+
+.footer-nav {
+    margin-bottom: 1rem;
+}
+
+.footer-nav a {
+    color: var(--light-text-color);
+    text-decoration: none;
+    margin: 0 0.5rem;
+    transition: color 0.2s ease;
+}
+
+.footer-nav a:hover {
+    color: var(--secondary-color);
 }
 
 
