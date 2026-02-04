@@ -416,3 +416,18 @@ body.dark-mode .ad-unit-container {
 body.dark-mode .ad-unit-container ins {
     background-color: var(--background-color);
 }
+
+.footer-nav {
+    margin-bottom: 1rem;
+}
+
+.footer-nav a {
+    color: var(--light-text-color);
+    text-decoration: none;
+    margin: 0 0.5rem;
+    transition: color 0.2s ease;
+}
+
+.footer-nav a:hover {
+    color: var(--secondary-color);
+}
