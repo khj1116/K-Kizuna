@@ -9,13 +9,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainElement = document.querySelector('main');
 
     const questions = [
-        { question: "1. 한국 드라마나 영화를 즐겨보시나요?", options: ["네, 매우 즐겨봐요", "가끔 보는 편이에요", "별로 보지 않아요", "전혀 보지 않아요"], key: "culture" },
-        { question: "2. 매운 음식을 어느 정도 드실 수 있나요?", options: ["아주 잘 먹어요", "조금은 먹을 수 있어요", "거의 못 먹어요", "전혀 못 먹어요"], key: "food" },
-        { question: "3. 새로운 사람들과 어울리는 것을 좋아하시나요?", options: ["네, 매우 좋아해요", "상황에 따라 달라요", "혼자 있는 것을 더 좋아해요", "많이 낯을 가리는 편이에요"], key: "social" },
-        { question: "4. 기념일을 챙기는 것에 대해 어떻게 생각하시나요?", options: ["중요하고 특별하게 챙겨야 해요", "간단하게라도 챙기는게 좋아요", "서로 합의하에 챙기지 않아도 괜찮아요", "별로 중요하지 않다고 생각해요"], key: "anniversary" },
-        { question: "5. 연인과의 연락 빈도는 어느 정도가 적당하다고 생각하시나요?", options: ["자주 할수록 좋아요", "필요할 때만 하면 돼요", "하루에 한 번 정도면 충분해요", "문자보다는 통화를 선호해요"], key: "contact" },
-        { question: "6. 갈등이 생겼을 때, 어떻게 해결하는 것을 선호하시나요?", options: ["바로 대화로 풀어나가야 해요", "혼자 생각할 시간이 필요해요", "친구들에게 조언을 구해요", "시간이 해결해주길 기다려요"], key: "conflict" },
-        { question: "7. 미래의 자녀 계획에 대해 생각해본 적이 있나요?", options: ["네, 긍정적으로 생각하고 있어요", "아직 잘 모르겠어요", "계획이 없어요", "상대방의 의견에 따를래요"], key: "family" }
+        { question: "1. 韓国ドラマや映画はよく見ますか？", options: ["はい、とても楽しんで見ています", "たまに見ます", "あまり見ません", "全く見ません"], key: "culture" },
+        { question: "2. 辛い食べ物はどのくらい食べられますか？", options: ["とてもよく食べられます", "少しは食べられます", "ほとんど食べられません", "全く食べられません"], key: "food" },
+        { question: "3. 新しい人との交流は好きですか？", options: ["はい、とても好きです", "状況によります", "一人でいる方が好きです", "かなり人見知りする方です"], key: "social" },
+        { question: "4. 記念日を祝うことについてどう思いますか？", options: ["重要で特別に祝うべきです", "簡単にでも祝うのが良いです", "お互いの合意があれば祝わなくても大丈夫です", "あまり重要だとは思いません"], key: "anniversary" },
+        { question: "5. 恋人との連絡頻度はどのくらいが適切だと思いますか？", options: ["頻繁であるほど良いです", "必要な時だけで良いです", "一日に一度くらいで十分です", "メッセージより通話を好みます"] , key: "contact" },
+        { question: "6. 争いが生じたとき、どのように解決することを好みますか？", options: ["すぐに話し合って解決すべきです", "一人で考える時間が必要です", "友達にアドバイスを求めます", "時間が解決してくれるのを待ちます"], key: "conflict" },
+        { question: "7. 将来の子供の計画について考えたことがありますか？", options: ["はい、前向きに考えています", "まだよくわかりません", "計画はありません", "相手の意見に従います"], key: "family" }
     ];
 
     let currentQuestionIndex = 0;
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
         nextButton.addEventListener('click', () => {
             const selectedOption = document.querySelector('input[name="option"]:checked');
             if (!selectedOption) {
-                alert("답변을 선택해주세요!");
+                alert("回答を選択してください！");
                 return;
             }
             const currentKey = questions[currentQuestionIndex].key;
@@ -64,9 +64,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function showResult() {
         quizContainer.innerHTML = `
-            <div class="question-text">진단 완료!</div>
-            <p>소중한 답변 감사합니다. 당신만을 위한 커스터마이징 리포트를 확인해보세요.</p>
-            <button id="see-report-button">리포트 보기</button>
+            <div class="question-text">診断完了！</div>
+            <p>貴重なご回答ありがとうございます。あなただけのカスタマイズレポートをご確認ください。</p>
+            <button id="see-report-button">レポートを見る</button>
         `;
         nextButton.classList.add('hidden');
         
@@ -82,24 +82,24 @@ document.addEventListener('DOMContentLoaded', () => {
         
         let reportHTML = `
             <section class="report-section">
-                <h3>AI 진단 리포트</h3>
+                <h3>AI診断レポート</h3>
                 <div class="score-container">
-                    <p>당신의 한국 연애/결혼 적응도는...</p>
+                    <p>あなたの韓国恋愛/結婚適応度は...</p>
                     <div class="score">${score}%</div>
                 </div>
                 <div class="report-details">
-                    <h4>상세 분석</h4>
+                    <h4>詳細分析</h4>
         `;
         
         // Detailed feedback based on answers
         const feedback = {
-            culture: `<strong>문화 적응도:</strong> "${userAnswers.culture}"라고 답하셨네요. 한국 대중문화에 대한 관심은 한국 생활과 문화를 이해하는 데 큰 도움이 될 거예요.`,
-            food: `<strong>식생활 적응도:</strong> 매운 음식에 대해 "${userAnswers.food}"라고 답해주셨어요. 한국에는 맵지 않고 맛있는 음식도 정말 많으니 걱정하지 마세요!`,
-            social: `<strong>사회성 및 관계:</strong> "${userAnswers.social}" 성향은 새로운 환경에서 친구를 사귀는 데 긍정적인 영향을 줄 수 있습니다.`,
-            anniversary: `<strong>기념일 가치관:</strong> "${userAnswers.anniversary}"라고 하셨죠. 한국은 기념일을 중요하게 생각하는 경향이 있으니, 상대방과 생각을 조율하는 과정이 즐거울 거예요.`,
-            contact: `<strong>연락 스타일:</strong> 연락 빈도에 대해 "${userAnswers.contact}"라고 답하셨군요. 솔직한 대화를 통해 서로에게 맞는 스타일을 찾아가는 것이 중요합니다.`,
-            conflict: `<strong>갈등 해결 방식:</strong> 갈등이 생겼을 때 "${userAnswers.conflict}"과 같이 해결하는군요. 당신의 현명한 대처 방식이 관계를 더 단단하게 만들 거예요.`,
-            family: `<strong>미래 계획:</strong> 자녀 계획에 대해 "${userAnswers.family}"라고 답해주셨어요. 미래에 대한 솔직한 대화는 신뢰를 쌓는 중요한 과정입니다.`
+            culture: `<strong>文化適応度:</strong> 「${userAnswers.culture}」と答えましたね。韓国の大衆文化への関心は、韓国での生活や文化を理解する上で大きな助けになるでしょう。`,
+            food: `<strong>食生活適応度:</strong> 辛い食べ物について「${userAnswers.food}」と答えましたね。韓国には辛くない美味しい料理もたくさんあるのでご心配なく！`,
+            social: `<strong>社会性および関係性:</strong> 「${userAnswers.social}」という性格は、新しい環境で友人を作るのに良い影響を与えるでしょう。`,
+            anniversary: `<strong>記念日の価値観:</strong> 「${userAnswers.anniversary}」と答えましたね。韓国では記念日を大切にする傾向があるので、相手と意見を調整する過程も楽しいはずです。`,
+            contact: `<strong>連絡スタイル:</strong> 連絡頻度について「${userAnswers.contact}」と答えましたね。正直な話し合いを通じて、お互いに合ったスタイルを見つけることが大切です。`,
+            conflict: `<strong>葛藤解決方法:</strong> 葛藤が生じたときに「${userAnswers.conflict}」のように解決するのですね。あなたの賢明な対処法が関係をより強固にするでしょう。`,
+            family: `<strong>将来の計画:</strong> 子供の計画について「${userAnswers.family}」と答えましたね。未来についての正直な話し合いは、信頼を築く上で重要な過程です。`
         };
         
         for (const key in userAnswers) {
@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         reportHTML += `
                 </div>
-                <button id="restart-button">테스트 다시하기</button>
+                <button id="restart-button">テストをやり直す</button>
             </section>
         `;
         
